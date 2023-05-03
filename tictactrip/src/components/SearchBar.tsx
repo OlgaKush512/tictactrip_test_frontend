@@ -1,13 +1,28 @@
+import './SearchBar.css';
+
 const SearchBar = () => {
   return (
-    <div>
-      <div>
-        <h1>Recherchez vos voyages, trajets courts et bien plus encore...</h1>
+    <div className="block-universal-search">
+      <div className="block-universal-search__wrapper">
+        <h1 className="search-heading">
+          Recherchez vos voyages, trajets courts et bien plus encore...
+        </h1>
       </div>
-      <div>
-        <form>
-          <div>
+      <div
+        className="universal-search"
+        id="universal-search"
+        data-test="search-autocomplete"
+      >
+        <form
+          className="universal-search__form"
+          id="universal-search-form"
+          action="/app/home/search"
+          method="get"
+          data-vsc-sticky /* to make the element stay fixed on the page when scrolling the page.*/
+        >
+          <div className="universal-search__wrapper" style={{borderRadius: 'solid'}}>
             <input
+              className="universal-search__input-search"
               name="userInput"
               type="search"
               id="userInput"
@@ -15,10 +30,11 @@ const SearchBar = () => {
               autoComplete="off"
             />
             <button
+              className="universal-search__submit"
               type="submit"
-            >
-              Rechercher
-            </button>
+              id="userInput-submit"
+              value="Rechercher"
+            ></button>
           </div>
         </form>
       </div>

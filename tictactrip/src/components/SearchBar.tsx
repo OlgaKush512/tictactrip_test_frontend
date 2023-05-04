@@ -8,9 +8,12 @@ import {
   Typography,
 } from '@mui/material';
 
-import './SearchBar.css';
+// import OptionsCity from './OptionsCity';
 
-interface City {
+import './SearchBar.css';
+import OptionsCity from './OptionsCity';
+
+export interface City {
   city_id: number;
   local_name: string;
 }
@@ -44,36 +47,30 @@ const SearchBar = () => {
         })
         .then((data: City[]) => {
           setResults(data);
-          //   console.log(data);
+          console.log('destination');
+          console.log(data);
         })
         .catch((error) => {
           console.error(error);
         });
     }
+    if (destination.length < 2) setPopularCities(true);
   }, [destination]);
 
-  
   const handleInputChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ): void => {
     setDestination(event.target.value);
   };
 
-  const handleClickCity = () => (event: MouseEvent<HTMLElement>) => {
-    if (destination.length < 2) setPopularCities(true);
-  };
-
   useEffect(() => {
     if (popularCities === true) {
-      fetch(
-        `https://api.comparatrip.eu/cities/popular/5`,
-        {
-          method: 'GET',
-          headers: {
-            'Access-Control-Allow-Origin': 'https://mywebsite.com',
-          },
-        }
-      )
+      fetch(`https://api.comparatrip.eu/cities/popular/5`, {
+        method: 'GET',
+        headers: {
+          'Access-Control-Allow-Origin': 'https://mywebsite.com',
+        },
+      })
         .then((response) => {
           if (!response.ok) {
             throw new Error(`Request failed with status ${response.status}`);
@@ -82,13 +79,14 @@ const SearchBar = () => {
         })
         .then((data: City[]) => {
           setResults(data);
-          //   console.log(data);
+          console.log('popularCities');
+          console.log(data);
         })
         .catch((error) => {
           console.error(error);
         });
     }
-  }, [destination]);
+  }, [popularCities]);
 
   /*Popper*/
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
@@ -97,18 +95,16 @@ const SearchBar = () => {
 
   const handleClick =
     (newPlacement: PopperPlacementType) => (event: MouseEvent<HTMLElement>) => {
+      if (destination.length < 2) setPopularCities(true);
       setAnchorEl(event.currentTarget);
       setOpen((prev) => placement !== newPlacement || !prev);
       setPlacement(newPlacement);
     };
-
   /*Width Popper*/
   const inputRef = useRef<HTMLInputElement | null>(null);
-  // const buttonRef = useRef<HTMLButtonElement | null>(null);
   const [popperWidth, setPopperWidth] = useState<number>(0);
   useEffect(() => {
     const inputWidth = inputRef.current?.offsetWidth || 0;
-    // const buttonWidth = buttonRef.current?.offsetWidth || 0;
     setPopperWidth(inputWidth);
   }, [inputRef]);
 
@@ -142,7 +138,8 @@ const SearchBar = () => {
               {({ TransitionProps }) => (
                 <Fade {...TransitionProps} timeout={350}>
                   <Paper
-                    style={{
+                    // elevation={0}
+                    sx={{
                       borderRadius: '.875rem',
                       marginTop: '5px',
                       borderTop: '8px',
@@ -151,9 +148,24 @@ const SearchBar = () => {
                       paddingTop: '16px',
                     }}
                   >
-                    <Typography sx={{ p: 2 }}>
-                      The content of the Popper.
+                    <Typography
+                      variant="caption"
+                      noWrap
+                      margin="16px"
+                      fontSize="13px"
+                      color="rgb(94, 104, 120)"
+                      fontWeight={500}
+                    >
+                      {popularCities ? 'Destinations Populaires' : 'Villes'}
                     </Typography>
+                    {results?.map((result: any, index: number) => (
+                      <OptionsCity
+                        key={result.city_id}
+                        local_name={result.local_name}
+                        isLast={index === results?.length - 1}
+                      />
+                      // <li key={result.city_id}>{result.local_name}</li>
+                    ))}
                   </Paper>
                 </Fade>
               )}
@@ -165,7 +177,9 @@ const SearchBar = () => {
               id="userInput"
               placeholder="Une destination, demande..."
               autoComplete="off"
-              onClick={(handleClick('bottom-start'), handleClickCity())}
+              onClick={handleClick('bottom-start')}
+              value={destination}
+              onChange={handleInputChange}
             />
             <button
               className="universal-search__submit"

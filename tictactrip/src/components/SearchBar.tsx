@@ -12,6 +12,7 @@ import {
 
 import './SearchBar.css';
 import OptionsCity from './OptionsCity';
+import { NavLink } from 'react-router-dom';
 
 export interface City {
   city_id: number;
@@ -108,6 +109,13 @@ const SearchBar = () => {
     setPopperWidth(inputWidth);
   }, [inputRef]);
 
+  //Selection
+  const [choosen, setChoosen] = useState<string | null>(null);
+  // useEffect(() => {
+  //   if (choosen !== '') {
+
+  //   }
+  // }, [popularCities]);
   return (
     <div className="block-universal-search">
       <div className="block-universal-search__wrapper">
@@ -159,11 +167,16 @@ const SearchBar = () => {
                       {popularCities ? 'Destinations Populaires' : 'Villes'}
                     </Typography>
                     {results?.map((result: any, index: number) => (
-                      <OptionsCity
-                        key={result.city_id}
-                        local_name={result.local_name}
-                        isLast={index === results?.length - 1}
-                      />
+                      // <NavLink
+                      //   to="/itinerary"
+                      //   style={{ textDecoration: 'none', color: 'inherit' }}
+                      // >
+                        <OptionsCity
+                          key={result.city_id}
+                          local_name={result.local_name}
+                          setChoosenClick={setChoosen}
+                        />
+                      // </NavLink>
                       // <li key={result.city_id}>{result.local_name}</li>
                     ))}
                   </Paper>
@@ -178,7 +191,7 @@ const SearchBar = () => {
               placeholder="Une destination, demande..."
               autoComplete="off"
               onClick={handleClick('bottom-start')}
-              value={destination}
+              value={choosen !== null ? choosen : destination}
               onChange={handleInputChange}
             />
             <button

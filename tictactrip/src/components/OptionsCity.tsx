@@ -22,8 +22,8 @@ const parsingCity = (location: string) => {
   return words;
 };
 
-const OptionsCity = (props: { local_name: string; isLast: boolean }) => {
-  const { local_name, isLast } = props;
+const OptionsCity = (props: { local_name: string; setChoosenClick: any }) => {
+  const { local_name, setChoosenClick } = props;
   const [isSelected, setIsSelected] = useState<boolean>(false);
   const handleMouseEnter = (): void => {
     setIsSelected(true);
@@ -51,6 +51,7 @@ const OptionsCity = (props: { local_name: string; isLast: boolean }) => {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         aria-selected={isSelected}
+        onClick={() => setChoosenClick(local_name)}
         style={{
           backgroundColor: isSelected ? 'rgb(229, 229, 239)' : 'white',
           padding: '0.5rem 1.5rem',

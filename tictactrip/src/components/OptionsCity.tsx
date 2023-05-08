@@ -1,6 +1,8 @@
 import { Box, Divider, Grid, Stack, SvgIcon, Typography } from '@mui/material';
-import { useState } from 'react';
-import { City } from './SearchBar';
+import { useState, useContext } from 'react';
+import CityContext from '../context/CityContext';
+import { useNavigate } from 'react-router-dom';
+
 // import city_icon from '../../images/city_icon.svg';
 
 function CityIcon(props: any) {
@@ -22,8 +24,13 @@ const parsingCity = (location: string) => {
   return words;
 };
 
-const OptionsCity = (props: { local_name: string; setChoosenClick: any }) => {
-  const { local_name, setChoosenClick } = props;
+const OptionsCity = (props: {
+  local_name: string;
+  setChoosen: any;
+  isContextUsed: boolean;
+  setLocation: any;
+}) => {
+  const { local_name, setChoosen, isContextUsed, setLocation } = props;
   const [isSelected, setIsSelected] = useState<boolean>(false);
   const handleMouseEnter = (): void => {
     setIsSelected(true);
@@ -45,13 +52,23 @@ const OptionsCity = (props: { local_name: string; setChoosenClick: any }) => {
     result = result + ')';
     return result;
   };
+  const { cityName, setCityName } = useContext(CityContext);
+  const navigate = useNavigate();
+
   return (
     <>
       <div
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         aria-selected={isSelected}
-        onClick={() => setChoosenClick(local_name)}
+        onClick={() => {
+          if (isContextUsed === true) {
+            setCityName(local_name);
+          } else {
+            setLocation(local_name);
+          }
+          setChoosen(true);
+        }}
         style={{
           backgroundColor: isSelected ? 'rgb(229, 229, 239)' : 'white',
           padding: '0.5rem 1.5rem',

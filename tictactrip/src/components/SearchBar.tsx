@@ -1,62 +1,36 @@
-import { useEffect, useState, MouseEvent, useRef } from 'react';
-import {
-  Box,
-  Fade,
-  Paper,
-  Popper,
-  PopperPlacementType,
-  Typography,
-} from '@mui/material';
-
-// import OptionsCity from './OptionsCity';
-
+import { useEffect, useState, MouseEvent, useRef, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { PopperPlacementType } from '@mui/material';
+import CityContext from '../context/CityContext';
+import PoperBoard from './PoperBoard';
+import { City, fetchData } from '../tools/fonctions';
 import './SearchBar.css';
-import OptionsCity from './OptionsCity';
-import { NavLink } from 'react-router-dom';
-
-export interface City {
-  city_id: number;
-  local_name: string;
-}
 
 const SearchBar = () => {
-  //API typed text
+  const [data, setData] = useState<City[]>([]);
+
   const [destination, setDestination] = useState<string>('');
 
-  const [results, setResults] = useState<City[]>([]);
-
-  //API clic; 5 popular cities
   const [popularCities, setPopularCities] = useState<boolean>(false);
 
+  //API autocomplete
   useEffect(() => {
     if (destination.length >= 2) {
       setPopularCities(false);
-      fetch(
-        `https://api.comparatrip.eu/cities/autocomplete/?q=${destination}`,
-        {
-          method: 'GET',
-          headers: {
-            'Access-Control-Allow-Origin': 'https://mywebsite.com',
-          },
-        }
-      )
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error(`Request failed with status ${response.status}`);
-          }
-          return response.json();
-        })
-        .then((data: City[]) => {
-          setResults(data);
-          console.log('destination');
-          console.log(data);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+      const url = `https://api.comparatrip.eu/cities/autocomplete/?q=${destination} `;
+      fetchData(url, setData);
     }
     if (destination.length < 2) setPopularCities(true);
   }, [destination]);
+
+  //API clic; 5 popular cities
+
+  useEffect(() => {
+    if (popularCities === true || destination.length < 2) {
+      const url = `https://api.comparatrip.eu/cities/popular/5`;
+      fetchData(url, setData);
+    }
+  }, [popularCities]);
 
   const handleInputChange = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -64,36 +38,10 @@ const SearchBar = () => {
     setDestination(event.target.value);
   };
 
-  useEffect(() => {
-    if (popularCities === true) {
-      fetch(`https://api.comparatrip.eu/cities/popular/5`, {
-        method: 'GET',
-        headers: {
-          'Access-Control-Allow-Origin': 'https://mywebsite.com',
-        },
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error(`Request failed with status ${response.status}`);
-          }
-          return response.json();
-        })
-        .then((data: City[]) => {
-          setResults(data);
-          console.log('popularCities');
-          console.log(data);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }
-  }, [popularCities]);
-
   /*Popper*/
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const [open, setOpen] = useState(false);
   const [placement, setPlacement] = useState<PopperPlacementType>();
-
   const handleClick =
     (newPlacement: PopperPlacementType) => (event: MouseEvent<HTMLElement>) => {
       if (destination.length < 2) setPopularCities(true);
@@ -108,14 +56,25 @@ const SearchBar = () => {
     const inputWidth = inputRef.current?.offsetWidth || 0;
     setPopperWidth(inputWidth);
   }, [inputRef]);
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   //Selection
-  const [choosen, setChoosen] = useState<string | null>(null);
-  // useEffect(() => {
-  //   if (choosen !== '') {
+  const [choosen, setChoosen] = useState<boolean>(false);
 
-  //   }
-  // }, [popularCities]);
+  const { cityName, setCityName } = useContext(CityContext);
+
+  //Navigate
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (choosen === true) {
+      navigate('/itinerary');
+    }
+  }, [choosen]);
+
   return (
     <div className="block-universal-search">
       <div className="block-universal-search__wrapper">
@@ -136,53 +95,21 @@ const SearchBar = () => {
           data-vsc-sticky /* to make the element stay fixed on the page when scrolling the page.*/
         >
           <div className="universal-search__wrapper" ref={inputRef}>
-            <Popper
+            <PoperBoard
+              setOpen={setOpen}
+              location={destination}
+              setFonction={setPopularCities}
+              popperWidth={popperWidth}
+              objective={popularCities ? 'Destinations Populaires' : 'Villes'}
+              data={data}
+              setChoosen={setChoosen}
+              handleClick={handleClick}
               open={open}
               anchorEl={anchorEl}
               placement={placement}
-              transition
-              style={{ width: popperWidth }}
-            >
-              {({ TransitionProps }) => (
-                <Fade {...TransitionProps} timeout={350}>
-                  <Paper
-                    // elevation={0}
-                    sx={{
-                      borderRadius: '.875rem',
-                      marginTop: '5px',
-                      borderTop: '8px',
-                      borderBottom: '8px',
-                      paddingBottom: '24px',
-                      paddingTop: '16px',
-                    }}
-                  >
-                    <Typography
-                      variant="caption"
-                      noWrap
-                      margin="16px"
-                      fontSize="13px"
-                      color="rgb(94, 104, 120)"
-                      fontWeight={500}
-                    >
-                      {popularCities ? 'Destinations Populaires' : 'Villes'}
-                    </Typography>
-                    {results?.map((result: any, index: number) => (
-                      // <NavLink
-                      //   to="/itinerary"
-                      //   style={{ textDecoration: 'none', color: 'inherit' }}
-                      // >
-                        <OptionsCity
-                          key={result.city_id}
-                          local_name={result.local_name}
-                          setChoosenClick={setChoosen}
-                        />
-                      // </NavLink>
-                      // <li key={result.city_id}>{result.local_name}</li>
-                    ))}
-                  </Paper>
-                </Fade>
-              )}
-            </Popper>
+              isContextUsed={true}
+              setLocation={setDestination}
+            />
             <input
               className="universal-search__input-search"
               name="userInput"
@@ -191,14 +118,17 @@ const SearchBar = () => {
               placeholder="Une destination, demande..."
               autoComplete="off"
               onClick={handleClick('bottom-start')}
-              value={choosen !== null ? choosen : destination}
+              value={cityName !== '' ? cityName : destination}
               onChange={handleInputChange}
             />
             <button
               className="universal-search__submit"
               type="submit"
-              id="userInput-submit"
               value="Rechercher"
+              onClick={() => {
+                setCityName(destination);
+                navigate('/itinerary');
+              }}
             ></button>
           </div>
         </form>

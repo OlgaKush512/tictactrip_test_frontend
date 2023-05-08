@@ -34,7 +34,7 @@ export const BlockFromTo = styled(Box)({
   display: 'flex',
   flexDirection: 'column',
   position: 'relative',
-  zIndex: 4,
+  zIndex: 1,
 });
 
 // export const blockFromTo: React.CSSProperties = {

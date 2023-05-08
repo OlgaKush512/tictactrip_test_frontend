@@ -1,19 +1,18 @@
-import React from 'react';
+import { MouseEvent, useContext, useEffect, useRef, useState } from 'react';
 import {
   TextField,
   InputAdornment,
   IconButton,
-  Divider,
-  Button,
   Typography,
-  FormControl,
-  InputLabel,
   SvgIcon,
+  PopperPlacementType,
 } from '@mui/material';
-import { createStyles, makeStyles, useTheme } from '@mui/styles';
-import { LocationOn as LocationOnIcon } from '@mui/icons-material';
+import CityContext from '../context/CityContext';
 import './Itinerary.css';
-import { ItineraryUniversalBox, BlockFromTo,UniversalBlockTo } from './stylesItinerary';
+import { ItineraryUniversalBox, BlockFromTo } from './stylesItinerary';
+import PoperBoard from './PoperBoard';
+import { City, fetchData } from '../tools/fonctions';
+// import CityContext from '../context/CityContext';
 
 function ButtonIcon(props: any) {
   return (
@@ -61,7 +60,7 @@ const buttonExchange: React.CSSProperties = {
   position: 'absolute',
   top: '50%',
   transform: 'translateY(-50%)',
-  zIndex: 1,
+  zIndex: 2,
 };
 const buttonExchangeSVG: React.CSSProperties = {
   fill: 'rgb(12, 19, 31)',
@@ -70,17 +69,162 @@ const buttonExchangeSVG: React.CSSProperties = {
   width: '1.5rem',
 };
 
-
-
 const Itinerary = () => {
-  // const classes = useStyles();
+  const [data, setData] = useState<City[]>([]);
+
+  const { cityName, setCityName } = useContext(CityContext);
+
+  //Input Raw
+
+  const [departure, setDeparture] = useState<string>('');
+
+  const [destination, setDestination] = useState<string>(
+    cityName !== '' ? cityName : ''
+  );
+  const handleInputChangeDestination = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
+    setDestination(event.target.value);
+  };
+
+  const handleInputChangeDeparture = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
+    setDeparture(event.target.value);
+  };
+
+  //API 5 popular point of depature
+
+  const [popularDeparture, setPopularDeparture] = useState<boolean>(false);
+  useEffect(() => {
+    if (popularDeparture === true || departure.length < 2) {
+      const url = `https://api.comparatrip.eu/cities/popular/to/${destination}/5 `;
+      fetchData(url, setData);
+    }
+    setCityName('');
+  }, [popularDeparture]);
+
+  //API 5 popular point of destination
+
+  const [popularDestination, setPopularDestination] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (popularDestination === true || destination.length < 2) {
+      const url = `https://api.comparatrip.eu/cities/popular/from/${departure}/5 `;
+      fetchData(url, setData);
+    }
+    setCityName('');
+  }, [popularDestination]);
+
+  //API input departure
+
+  useEffect(() => {
+    if (departure.length >= 2) {
+      setPopularDeparture(false);
+      const url = `https://api.comparatrip.eu/cities/autocomplete/?q=${departure} `;
+      fetchData(url, setData);
+    }
+    if (departure.length < 2) setPopularDeparture(true);
+    setCityName('');
+  }, [departure]);
+
+  //API input destination
+
+  useEffect(() => {
+    if (destination.length >= 2) {
+      setPopularDestination(false);
+      const url = `https://api.comparatrip.eu/cities/autocomplete/?q=${destination} `;
+      fetchData(url, setData);
+    }
+    if (destination.length < 2) setPopularDestination(true);
+    setCityName('');
+  }, [destination]);
+
+  /*Popper Departure*/
+  const [choosenDeparture, setChoosenDeparture] = useState<boolean>(false);
+  const [anchorElDeparture, setAnchorElDeparture] =
+    useState<HTMLElement | null>(null);
+  const [openDeparture, setOpenDeparture] = useState(false);
+  const [placementDeparture, setPlacementDeparture] =
+    useState<PopperPlacementType>();
+  const handleClickDeparture =
+    (newPlacement: PopperPlacementType) => (event: MouseEvent<HTMLElement>) => {
+      if (departure.length < 2) setPopularDeparture(true);
+      setAnchorElDeparture(event.currentTarget);
+      setOpenDeparture((prev) => placementDeparture !== newPlacement || !prev);
+      setPlacementDeparture(newPlacement);
+    };
+
+  /*Popper Destination*/
+  const [choosenDestination, setChoosenDestination] = useState<boolean>(false);
+  const [anchorElDestination, setAnchorElDestination] =
+    useState<HTMLElement | null>(null);
+  const [openDestination, setOpenDestination] = useState(false);
+  const [placementDestination, setPlacementDestination] =
+    useState<PopperPlacementType>();
+  const handleClickDestination =
+    (newPlacement: PopperPlacementType) => (event: MouseEvent<HTMLElement>) => {
+      if (destination.length < 2) setPopularDestination(true);
+      setAnchorElDestination(event.currentTarget);
+      setOpenDestination(
+        (prev) => placementDestination !== newPlacement || !prev
+      );
+      setPlacementDestination(newPlacement);
+    };
+
+  /*Width Popper*/
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  const [popperWidth, setPopperWidth] = useState<number>(0);
+  useEffect(() => {
+    const inputWidth = inputRef.current?.offsetWidth || 0;
+    setPopperWidth(inputWidth);
+  }, [inputRef]);
+
+  /*Poppers's CloseHandlers */
+  useEffect(() => {
+    if (choosenDeparture === true) {
+      setOpenDeparture(false);
+    }
+  }, [choosenDeparture]);
+
+  useEffect(() => {
+    if (choosenDestination === true) {
+      setOpenDestination(false);
+    }
+  }, [choosenDestination]);
 
   return (
     <ItineraryUniversalBox
       style={{ marginTop: '50px' }}
       className="itinerary-universal"
     >
-      <BlockFromTo>
+      <BlockFromTo ref={inputRef}>
+        <PoperBoard
+          setOpen={setOpenDeparture}
+          popperWidth={popperWidth}
+          objective={popularDeparture ? 'Departure Populaires' : 'Villes'}
+          data={data}
+          setChoosen={setChoosenDeparture}
+          handleClick={handleClickDeparture}
+          open={openDeparture}
+          anchorEl={anchorElDeparture}
+          placement={placementDeparture}
+          isContextUsed={false}
+          setLocation={setDeparture}
+        />
+        <PoperBoard
+          setOpen={setOpenDestination}
+          popperWidth={popperWidth}
+          objective={popularDestination ? 'Destination Populaires' : 'Villes'}
+          data={data}
+          setChoosen={setChoosenDestination}
+          handleClick={handleClickDestination}
+          open={openDestination}
+          anchorEl={anchorElDestination}
+          placement={placementDestination}
+          isContextUsed={false}
+          setLocation={setDestination}
+        />
         <TextField
           sx={{
             '&MuiOutlinedInput-root': {
@@ -89,8 +233,11 @@ const Itinerary = () => {
           }}
           // className="universal-block-to"
           color="primary"
-          // label="Départ :"
           placeholder="D'où partons-nous ?"
+          value={departure}
+          onChange={handleInputChangeDeparture}
+          onClick={handleClickDeparture('bottom-start')}
+          autoComplete="off"
           InputProps={{
             startAdornment: (
               <InputAdornment position="start" className="adornment">
@@ -105,8 +252,11 @@ const Itinerary = () => {
           className="input-bottom"
           style={blockUniversalTo}
           color="primary"
-          // label="Arrivée :"
           placeholder="Où allons-nous ?"
+          value={destination}
+          onChange={handleInputChangeDestination}
+          onClick={handleClickDestination('bottom-start')}
+          autoComplete="off"
           InputProps={{
             startAdornment: (
               <InputAdornment position="start" className="adornment">
@@ -116,13 +266,20 @@ const Itinerary = () => {
               </InputAdornment>
             ),
           }}
-          value="Paris"
         />
-        <IconButton sx={buttonExchange}>
+        <IconButton
+          sx={buttonExchange}
+          onClick={() => {
+            const temp = departure;
+            setDeparture(destination);
+            setDestination(departure);
+          }}
+        >
           <ButtonIcon
             stylr={buttonExchangeSVG}
             variant="contained"
             size="large"
+            sx={{ zIndex: 2 }}
           />
         </IconButton>
       </BlockFromTo>

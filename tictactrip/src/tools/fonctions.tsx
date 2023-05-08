@@ -27,3 +27,8 @@ export function fetchData(
       console.error(error);
     });
 }
+
+export const parsingCity = (location: string) => {
+  const words: string[] = location.split(/[,\s]+/);
+  return words;
+};

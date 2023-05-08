@@ -1,4 +1,4 @@
-import { Box, BoxProps, TextField, TextFieldProps } from '@mui/material';
+import { Box, BoxProps, SvgIcon, TextField, TextFieldProps } from '@mui/material';
 import { styled, useTheme } from '@mui/material/styles';
 
 // const theme = useTheme();
@@ -91,4 +91,52 @@ export const universalBlockTo: React.CSSProperties = {
   height: '3rem',
   padding: '0px 4.5rem 0px 1rem',
   borderRadius: '0.875rem 0.875rem 0px 0px',
+};
+
+export const blockUniversalTo: React.CSSProperties = {
+  color: 'rgb(12, 19, 31)',
+  height: '2.75rem',
+  padding: '0px',
+  textOverflow: ' ellipsis',
+};
+
+export const buttonExchange: React.CSSProperties = {
+  display: 'inline-flex',
+  // -webkit-box-align: 'center',
+  alignItems: 'center',
+  // -webkit-box-pack: 'center',
+  justifyContent: 'center',
+  boxSizing: 'border-box',
+  // -webkit-tap-highlight-color: 'transparent',
+  outline: '0px',
+  border: '0px',
+  margin: '0px',
+  cursor: 'pointer',
+  userSelect: 'none',
+  verticalAlign: 'middle',
+  appearance: 'none',
+  textDecoration: 'none',
+  textAlign: 'center',
+  flex: '0 0 auto',
+  borderRadius: '50%',
+  overflow: 'visible',
+  color: 'rgb(12, 19, 31)',
+  transition: 'background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
+  fontSize: ' 1.75rem',
+  backgroundColor: 'rgb(243, 243, 248)',
+  padding: '0px',
+  height: '2.5rem',
+  width: '2.5rem',
+  right: '1rem',
+  position: 'absolute',
+  top: '50%',
+  transform: 'translateY(-50%)',
+  zIndex: 2,
+};
+
+export const buttonExchangeSVG: React.CSSProperties = {
+  fill: 'rgb(12, 19, 31)',
+  transform: ' rotate(90deg)',
+  height: '1.5rem',
+  width: '1.5rem',
 };

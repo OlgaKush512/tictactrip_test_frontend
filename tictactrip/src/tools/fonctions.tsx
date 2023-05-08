@@ -21,7 +21,6 @@ export function fetchData(
     })
     .then((data) => {
       setResults(data);
-      console.log(data);
     })
     .catch((error) => {
       console.error(error);

@@ -116,3 +116,26 @@ div {
 .search-results {
   width: 100%;
 }
+
+@media (min-width: 48.0625em) {
+  .universal-search__backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(132, 139, 155, 0.7);
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+    z-index: 800;
+    display: none;
+    top: -100vh;
+    right: -1.25rem;
+    bottom: -100vh;
+    z-index: 0;
+    pointer-events: auto;
+  }
+  .universal-search__backdrop--on {
+    display: block;
+  }
+}

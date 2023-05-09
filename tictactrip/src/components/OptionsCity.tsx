@@ -58,6 +58,7 @@ Generates the location string for the city.
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       aria-selected={isCursorOn}
+      role="option"
       onClick={() => {
         if (isContextUsed === true) {
           setCityName(local_name);

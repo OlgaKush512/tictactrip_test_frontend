@@ -8,7 +8,6 @@ The PoperBoard component is used to display a popper with a list of cities.
 @component
 */
 const PoperBoard = (props: any) => {
-
   /**@param {Object} props - The component props
 @param {Function} props.setOpen - Callback function to control the open state of the popper
 @param {number} props.popperWidth - The width of the popper element
@@ -52,6 +51,7 @@ Passed to the OptionsCity component via props.
       placement={placement}
       transition
       sx={{ width: popperWidth, zIndex: 1 }}
+      data-testid="poper"
     >
       {({ TransitionProps }) => (
         <Fade {...TransitionProps} timeout={350}>
@@ -68,7 +68,7 @@ Passed to the OptionsCity component via props.
             }}
           >
             <ClickAwayListener onClickAway={onClose}>
-              <div>
+              <div role="presentation">
                 <Typography
                   variant="caption"
                   noWrap

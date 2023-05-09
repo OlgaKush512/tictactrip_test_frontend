@@ -91,7 +91,7 @@ const SearchBar = () => {
   }, [open]);
 
   return (
-    <div className="block-universal-search">
+    <div className="block-universal-search" >
       <div className="block-universal-search__wrapper">
         <h1 className="search-heading">
           Recherchez vos voyages, trajets courts et bien plus encore...
@@ -110,40 +110,40 @@ const SearchBar = () => {
           data-vsc-sticky //to make the element stay fixed on the page when scrolling the page.
         >
           {/* <div className="universal-search__backdrop "> */}
-            <div className="universal-search__wrapper" ref={inputRef}>
-              <PoperBoard
-                setOpen={setOpen}
-                popperWidth={popperWidth}
-                objective={popularCities ? 'Destinations Populaires' : 'Villes'}
-                data={data}
-                setChoosen={setChoosen}
-                open={open}
-                anchorEl={anchorEl}
-                placement={placement}
-                isContextUsed={true}
-                setLocation={setDestination}
-              />
-              <input
-                className="universal-search__input-search"
-                name="userInput"
-                type="search"
-                id="userInput"
-                placeholder="Une destination, demande..."
-                autoComplete="off"
-                onClick={handleClick('bottom-start')}
-                value={cityName !== '' ? cityName : destination}
-                onChange={handleInputChange}
-              />
-              <button
-                className="universal-search__submit"
-                type="submit"
-                value="Rechercher"
-                onClick={() => {
-                  setCityName(destination);
-                  navigate('/itinerary');
-                }}
-              ></button>
-            </div>
+          <div className="universal-search__wrapper" ref={inputRef}>
+            <PoperBoard
+              setOpen={setOpen}
+              popperWidth={popperWidth}
+              objective={popularCities ? 'Destinations Populaires' : 'Villes'}
+              data={data}
+              setChoosen={setChoosen}
+              open={open}
+              anchorEl={anchorEl}
+              placement={placement}
+              isContextUsed={true}
+              setLocation={setDestination}
+            />
+            <input
+              className="universal-search__input-search"
+              name="userInput"
+              type="search"
+              id="userInput"
+              placeholder="Une destination, demande..."
+              autoComplete="off"
+              onClick={handleClick('bottom-start')}
+              value={cityName !== '' ? cityName : destination}
+              onChange={handleInputChange}
+            />
+            <button
+              className="universal-search__submit"
+              type="submit"
+              value="Rechercher"
+              onClick={() => {
+                setCityName(destination);
+                navigate('/itinerary');
+              }}
+            ></button>
+          </div>
           {/* </div> */}
         </form>
       </div>

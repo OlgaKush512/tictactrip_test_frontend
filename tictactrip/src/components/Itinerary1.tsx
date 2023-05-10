@@ -5,6 +5,10 @@ import {
   IconButton,
   Typography,
   PopperPlacementType,
+  Input,
+  Container,
+  Grid,
+  Box,
 } from '@mui/material';
 import CityContext from '../context/CityContext';
 import './Itinerary.css';
@@ -198,92 +202,109 @@ const Itinerary = () => {
   }, [choosenDestination]);
 
   return (
-    <ItineraryUniversalBox
-      style={{ marginTop: '50px' }}
-      className="itinerary-universal"
+    <Box
+      sx={{ backgroundColor: 'rgb(243, 243, 248)' }}
+      style={{ minHeight: '100vh', minWidth: 'auto' }}
     >
-      <BlockFromTo ref={inputRef}>
-        <PoperBoard
-          setOpen={setOpenDeparture}
-          popperWidth={popperWidth}
-          objective={popularDeparture ? 'Départs Populaires' : 'Villes'}
-          data={dataPopDep}
-          setChoosen={setChoosenDeparture}
-          open={openDeparture}
-          anchorEl={anchorElDeparture}
-          placement={placementDeparture}
-          isContextUsed={false}
-          setLocation={setDeparture}
-        />
-        <PoperBoard
-          setOpen={setOpenDestination}
-          popperWidth={popperWidth}
-          objective={popularDestination ? 'Destination Populaires' : 'Villes'}
-          data={dataPopDes}
-          setChoosen={setChoosenDestination}
-          open={openDestination}
-          anchorEl={anchorElDestination}
-          placement={placementDestination}
-          isContextUsed={false}
-          setLocation={setDestination}
-        />
-        <TextField
-          sx={{
-            '&MuiOutlinedInput-root': {
-              borderRadius: '0.875rem 0.875rem 0px 0px',
-            },
-          }}
-          color="primary"
-          placeholder="D'où partons-nous ?"
-          value={departure}
-          onChange={handleInputChangeDeparture}
-          onClick={handleClickDeparture('bottom-start')}
-          autoComplete="off"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start" className="adornment">
-                <Typography className="font-itinerary-input ">
-                  Départ :
-                </Typography>
-              </InputAdornment>
-            ),
-          }}
-        />
-        <TextField
-          className="input-bottom"
-          style={blockUniversalTo}
-          color="primary"
-          placeholder="Où allons-nous ?"
-          value={destination}
-          onChange={handleInputChangeDestination}
-          onClick={handleClickDestination('bottom-start')}
-          autoComplete="off"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start" className="adornment">
-                <Typography className="font-itinerary-input ">
-                  Arrivée :
-                </Typography>
-              </InputAdornment>
-            ),
-          }}
-        />
-        <IconButton
-          sx={buttonExchange}
-          onClick={() => {
-            setDeparture(destination);
-            setDestination(departure);
-          }}
+      <Container>
+        {/* <Grid container columns={10} justifyContent="center" mt={10} spacing={2}> */}
+        <ItineraryUniversalBox
+          style={{ marginTop: '50px' }}
+          className="itinerary-universal"
         >
-          <ButtonIcon
-            stylr={buttonExchangeSVG}
-            variant="contained"
-            size="large"
-            sx={{ zIndex: 2 }}
-          />
-        </IconButton>
-      </BlockFromTo>
-    </ItineraryUniversalBox>
+          <BlockFromTo ref={inputRef}>
+            <PoperBoard
+              setOpen={setOpenDeparture}
+              popperWidth={popperWidth}
+              objective={popularDeparture ? 'Départs Populaires' : 'Villes'}
+              data={dataPopDep}
+              setChoosen={setChoosenDeparture}
+              open={openDeparture}
+              anchorEl={anchorElDeparture}
+              placement={placementDeparture}
+              isContextUsed={false}
+              setLocation={setDeparture}
+            />
+            <PoperBoard
+              setOpen={setOpenDestination}
+              popperWidth={popperWidth}
+              objective={
+                popularDestination ? 'Destination Populaires' : 'Villes'
+              }
+              data={dataPopDes}
+              setChoosen={setChoosenDestination}
+              open={openDestination}
+              anchorEl={anchorElDestination}
+              placement={placementDestination}
+              isContextUsed={false}
+              setLocation={setDestination}
+            />
+            <Input
+              placeholder="D'où partons-nous ?"
+              value={departure}
+              onChange={handleInputChangeDeparture}
+              onClick={handleClickDeparture('bottom-start')}
+              autoComplete="off"
+              disableUnderline
+              startAdornment={
+                <InputAdornment position="start" className="adornment">
+                  Départ&nbsp;:&nbsp;
+                </InputAdornment>
+              }
+              sx={{
+                borderRadius: '15px 15px 0px 0px',
+                padding: 1,
+                backgroundColor: 'white',
+                border: '2px solid transparent',
+                '&:hover': { backgroundColor: '#e5e5ef' },
+                '&.Mui-focused': {
+                  border: '2px solid #127996',
+                },
+              }}
+            />
+            <Input
+              placeholder="Où allons-nous ?"
+              value={destination}
+              onChange={handleInputChangeDestination}
+              onClick={handleClickDestination('bottom-start')}
+              autoComplete="off"
+              startAdornment={
+                <InputAdornment position="start" className="adornment">
+                  Arrivée&nbsp;:&nbsp;
+                </InputAdornment>
+              }
+              disableUnderline
+              sx={{
+                marginTop: '2px',
+                backgroundColor: 'white',
+                borderRadius: '0px 0px 15px 15px',
+                padding: 1,
+                border: '2px solid transparent',
+                '&:hover': { backgroundColor: '#e5e5ef' },
+                '&.Mui-focused': {
+                  border: '2px solid #127996',
+                },
+              }}
+            />
+
+            <IconButton
+              sx={buttonExchange}
+              onClick={() => {
+                setDeparture(destination);
+                setDestination(departure);
+              }}
+            >
+              <ButtonIcon
+                style={buttonExchangeSVG}
+                variant="contained"
+                size="large"
+                sx={{ zIndex: 2 }}
+              />
+            </IconButton>
+          </BlockFromTo>
+        </ItineraryUniversalBox>
+      </Container>
+    </Box>
   );
 };
 

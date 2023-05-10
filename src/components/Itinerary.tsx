@@ -23,11 +23,7 @@ import { ButtonIcon } from '../tools/imagesSVG';
  * Itinerary component allows users to select departure and destination cities for travel.
  * It displays popular points of departure and destinations based on user input.
  *
- * Usage:
- * <Itinerary />
- *
- * Props:
- * None
+ * Props: None
  */
 
 const Itinerary = () => {

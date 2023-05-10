@@ -9,9 +9,11 @@ The OptionsCity component displays an option for a city in a dropdown list.
 It allows the user to select a city and triggers the corresponding actions.
 @param {Object} props - The component props.
 @param {string} props.local_name - The local name of the city.
+@param {string} props.unique_name - The unique name of the city.
 @param {Function} props.setChoosen - Callback function to handle the selection of an option.
 @param {boolean} props.isContextUsed - Indicates whether the CityContext is being used.
 @param {Function} props.setLocation - Callback function to set the location.
+@param {Function} props.setOpen - Callback function to control the open state of the popper
 @returns {JSX.Element} The rendered OptionsCity component.
 */
 

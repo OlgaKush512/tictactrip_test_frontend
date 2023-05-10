@@ -32,7 +32,8 @@ import { parsingCity } from '../tools/fonctions';
  */
 
 const Itinerary = () => {
-  const [data, setData] = useState<City[]>([]); // State for storing city data
+  const [dataPopDep, setDataPopDep] = useState<City[]>([]); // State for storing city data Departure
+  const [dataPopDes, setDataPopDes] = useState<City[]>([]); // State for storing city data Destination
 
   const { cityName, setCityName } = useContext(CityContext); // Retrieve selected city name from context
 
@@ -43,12 +44,6 @@ const Itinerary = () => {
   const [destination, setDestination] = useState<string>(
     cityName !== '' ? cityName : ''
   );
-  // Handle input change for destination
-  const handleInputChangeDestination = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ): void => {
-    setDestination(event.target.value);
-  };
   // Handle input change for departure
   const handleInputChangeDeparture = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -56,24 +51,37 @@ const Itinerary = () => {
     setDeparture(event.target.value);
   };
 
+  // Handle input change for destination
+  const handleInputChangeDestination = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
+    setDestination(event.target.value);
+  };
   /**Fetch popular points of departure if a destination is set,
    * otherwise fetch popular cities
    */
 
   const [popularDeparture, setPopularDeparture] = useState<boolean>(false);
+
   useEffect(() => {
     if (popularDeparture === true || departure.length < 2) {
       let url: string = '';
       if (destination !== '') {
-        const city = parsingCity(destination)[0];
-        url = `https://api.comparatrip.eu/cities/popular/to/${city}/5 `;
+        const parsedCity = parsingCity(destination);
+        if (parsedCity && parsedCity.length > 0) {
+          const city = parsedCity[0];
+          console.log(city);
+          url = `https://api.comparatrip.eu/cities/popular/to/${city}/5 `;
+          console.log(url);
+        }
       } else {
         url = `https://api.comparatrip.eu/cities/popular/5`;
       }
-      fetchData(url, setData);
+
+      fetchData(url, setDataPopDep);
     }
     setCityName('');
-  }, [popularDeparture]);
+  }, [popularDeparture, destination, departure, setCityName]);
 
   /**Fetch popular points of destination if a departure is set,
    * otherwise fetch popular cities
@@ -85,26 +93,29 @@ const Itinerary = () => {
     if (popularDestination === true || destination.length < 2) {
       let url: string = '';
       if (departure !== '') {
-        const city = parsingCity(departure)[0];
-        url = `https://api.comparatrip.eu/cities/popular/from/${city}/5 `;
+        const parsedCity = parsingCity(departure);
+        if (parsedCity && parsedCity.length > 0) {
+          const city = parsedCity[0];
+          url = `https://api.comparatrip.eu/cities/popular/from/${city}/5 `;
+        }
       } else {
         url = `https://api.comparatrip.eu/cities/popular/5`;
       }
-      fetchData(url, setData);
+      fetchData(url, setDataPopDes);
     }
     setCityName('');
-  }, [popularDeparture]);
+  }, [popularDestination, destination, departure, setCityName]);
 
   // Fetch city data based on input for departure
   useEffect(() => {
     if (departure.length >= 2) {
       setPopularDeparture(false);
       const url = `https://api.comparatrip.eu/cities/autocomplete/?q=${departure} `;
-      fetchData(url, setData);
+      fetchData(url, setDataPopDep);
     }
     if (departure.length < 2) setPopularDeparture(true);
     setCityName('');
-  }, [departure]);
+  }, [departure, setCityName]);
 
   // Fetch city data based on input for destination
 
@@ -112,11 +123,11 @@ const Itinerary = () => {
     if (destination.length >= 2) {
       setPopularDestination(false);
       const url = `https://api.comparatrip.eu/cities/autocomplete/?q=${destination} `;
-      fetchData(url, setData);
+      fetchData(url, setDataPopDes);
     }
     if (destination.length < 2) setPopularDestination(true);
     setCityName('');
-  }, [destination]);
+  }, [destination, setCityName]);
 
   /*Popper Departure*/
   const [choosenDeparture, setChoosenDeparture] = useState<boolean>(false); //Is a departure option has been chosen.
@@ -125,13 +136,15 @@ const Itinerary = () => {
   const [openDeparture, setOpenDeparture] = useState(false); //The state indicating whether the departure Popper is open.
   const [placementDeparture, setPlacementDeparture] = //The placement of the departure Popper relative to its anchor element.
     useState<PopperPlacementType>();
+
   /**The event handler function for clicking on the departure Popper. */
   const handleClickDeparture =
     (newPlacement: PopperPlacementType) => (event: MouseEvent<HTMLElement>) => {
-      if (departure.length < 2) setPopularDeparture(true);
+      // if (departure.length < 2)
       setAnchorElDeparture(event.currentTarget);
       setOpenDeparture((prev) => placementDeparture !== newPlacement || !prev);
       setPlacementDeparture(newPlacement);
+      setPopularDeparture(true);
     };
 
   /*Popper Destination*/
@@ -141,10 +154,12 @@ const Itinerary = () => {
   const [openDestination, setOpenDestination] = useState(false); //The state indicating whether the destination Popper is open.
   const [placementDestination, setPlacementDestination] = //The placement of the destination Popper relative to its anchor element.
     useState<PopperPlacementType>();
+
   /**The event handler function for clicking on the destination Popper. */
   const handleClickDestination =
     (newPlacement: PopperPlacementType) => (event: MouseEvent<HTMLElement>) => {
-      if (destination.length < 2) setPopularDestination(true);
+      // if (destination.length < 2)
+      setPopularDestination(true);
       setAnchorElDestination(event.currentTarget);
       setOpenDestination(
         (prev) => placementDestination !== newPlacement || !prev
@@ -192,7 +207,7 @@ const Itinerary = () => {
           setOpen={setOpenDeparture}
           popperWidth={popperWidth}
           objective={popularDeparture ? 'Départs Populaires' : 'Villes'}
-          data={data}
+          data={dataPopDep}
           setChoosen={setChoosenDeparture}
           open={openDeparture}
           anchorEl={anchorElDeparture}
@@ -204,7 +219,7 @@ const Itinerary = () => {
           setOpen={setOpenDestination}
           popperWidth={popperWidth}
           objective={popularDestination ? 'Destination Populaires' : 'Villes'}
-          data={data}
+          data={dataPopDes}
           setChoosen={setChoosenDestination}
           open={openDestination}
           anchorEl={anchorElDestination}

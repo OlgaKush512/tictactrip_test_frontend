@@ -64,7 +64,7 @@ Generates the location string for the city.
           setCityName(local_name);
         } else {
           setLocation(local_name);
-        } 
+        }
         setChoosen(true);
       }}
       style={{

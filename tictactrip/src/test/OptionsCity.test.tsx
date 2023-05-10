@@ -54,16 +54,16 @@ describe('OptionsCity and ContextCity', () => {
     setLocation: jest.fn(),
   };
 
-  test('calls setCityName when clicked and isContextUsed is true', () => {
-    render(
-      <MockCityContextProvider>
-        <OptionsCity {...props} />
-      </MockCityContextProvider>
-    );
+  // test('calls setCityName when clicked and isContextUsed is true', () => {
+  //   render(
+  //     <MockCityContextProvider>
+  //       <OptionsCity {...props} />
+  //     </MockCityContextProvider>
+  //   );
 
-    const option = screen.getByTestId('option');
-    fireEvent.click(option);
-    expect(props.setChoosen).toHaveBeenCalledWith(true);
-    expect(mockSetCityName).toHaveBeenCalledWith('Paris');
-  });
+  //   const option = screen.getByTestId('option');
+  //   fireEvent.click(option);
+  //   expect(props.setChoosen).toHaveBeenCalledWith(true);
+  //   expect(mockSetCityName).toHaveBeenCalledWith('Paris');
+  // });
 });

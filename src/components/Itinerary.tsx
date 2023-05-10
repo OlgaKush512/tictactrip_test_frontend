@@ -220,7 +220,6 @@ const Itinerary = () => {
     >
       <Container>
         <ItineraryUniversalBox
-          // style={{ marginTop: '50px' }}
           className="itinerary-universal"
         >
           <BlockFromTo ref={inputRef}>

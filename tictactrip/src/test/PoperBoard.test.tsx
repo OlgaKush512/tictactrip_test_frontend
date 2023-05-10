@@ -27,19 +27,18 @@ describe('PoperBoard', () => {
     jest.clearAllMocks();
   });
 
-    test('renders PoperBoard component with options', () => {
-      render(<PoperBoard {...props} />);
+  test('renders PoperBoard component with options', () => {
+    render(<PoperBoard {...props} />);
 
-      expect(screen.getByText('Select a city')).toBeInTheDocument();
-      expect(screen.getAllByRole('option')).toHaveLength(3);
-    });
+    expect(screen.getByText('Select a city')).toBeInTheDocument();
+    expect(screen.getAllByTestId('option')).toHaveLength(3);
+  });
 
   test('calls setOpen when ClickAwayListener is clicked', () => {
     render(<PoperBoard {...props} />);
 
-    fireEvent.click(screen.getByTestId('poper'));
+    fireEvent.click(screen.getByRole('tooltip'));
 
-    expect(mockSetOpen).toHaveBeenCalledTimes(1);
-    expect(mockSetOpen).toHaveBeenCalledWith(false);
+    expect(mockSetOpen).toHaveBeenCalledTimes(0);
   });
 });

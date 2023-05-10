@@ -12,7 +12,7 @@ import './SearchBar.css';
  * @component
  */
 
-const SearchBar = () => {
+export const SearchBar = () => {
   // State variables
   const [data, setData] = useState<City[]>([]); // State for city data
   const [destination, setDestination] = useState<string>(''); // State for destination input
@@ -91,13 +91,13 @@ const SearchBar = () => {
   }, [open]);
 
   return (
-    <div className="block-universal-search" >
+    <div className="block-universal-search" data-testid="non-tooltip">
       <div className="block-universal-search__wrapper">
         <h1 className="search-heading">
           Recherchez vos voyages, trajets courts et bien plus encore...
         </h1>
       </div>
-      <div
+      <div role="header"
         className="universal-search"
         id="universal-search"
         data-test="search-autocomplete"

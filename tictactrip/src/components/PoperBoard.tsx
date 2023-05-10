@@ -51,7 +51,7 @@ Passed to the OptionsCity component via props.
       placement={placement}
       transition
       sx={{ width: popperWidth, zIndex: 1 }}
-      data-testid="poper"
+      data-testid="non-popper"
     >
       {({ TransitionProps }) => (
         <Fade {...TransitionProps} timeout={350}>
@@ -68,7 +68,7 @@ Passed to the OptionsCity component via props.
             }}
           >
             <ClickAwayListener onClickAway={onClose}>
-              <div role="presentation">
+              <div>
                 <Typography
                   variant="caption"
                   noWrap

@@ -1,0 +1,154 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for src/tools/imagesSVG.tsx</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/tools</a> imagesSVG.tsx</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>2/2</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>2/2</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>2/2</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input oninput="onInput()" type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">32x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { SvgIcon } from '@mui/material';
+&nbsp;
+export function CityIcon(props: any) {
+  return (
+    &lt;SvgIcon {...props}&gt;
+      &lt;path d="M14.3915 9.27272C14.0313 9.27272 13.7393 9.57798 13.7393 9.95455V11.3181C13.7393 11.6947 14.0313 12 14.3915 12H15.6958C16.056 12 16.348 11.6947 16.348 11.3181V9.95455C16.348 9.57798 16.056 9.27272 15.6958 9.27272H14.3915ZM14.6088 11.091V10.1818H15.4784V11.091H14.6088Z"&gt;&lt;/path&gt;
+      &lt;path d="M17.2173 9.95455C17.2173 9.57798 17.5092 9.27272 17.8694 9.27272H19.1738C19.534 9.27272 19.826 9.57798 19.826 9.95455V11.3181C19.826 11.6947 19.534 12 19.1738 12H17.8694C17.5092 12 17.2173 11.6947 17.2173 11.3181V9.95455ZM18.0868 10.1818V11.091H18.9564V10.1818H18.0868Z"&gt;&lt;/path&gt;
+      &lt;path d="M14.3915 5.63668C14.0313 5.63668 13.7393 5.94194 13.7393 6.31849V7.68213C13.7393 8.05869 14.0313 8.36394 14.3915 8.36394H15.6958C16.056 8.36394 16.348 8.05869 16.348 7.68213V6.31849C16.348 5.94194 16.056 5.63668 15.6958 5.63668H14.3915ZM14.6088 7.45486V6.54576H15.4784V7.45486H14.6088Z"&gt;&lt;/path&gt;
+      &lt;path d="M17.2173 6.31849C17.2173 5.94194 17.5092 5.63668 17.8694 5.63668H19.1738C19.534 5.63668 19.826 5.94194 19.826 6.31849V7.68213C19.826 8.05869 19.534 8.36394 19.1738 8.36394H17.8694C17.5092 8.36394 17.2173 8.05869 17.2173 7.68213V6.31849ZM18.0868 6.54576V7.45486H18.9564V6.54576H18.0868Z"&gt;&lt;/path&gt;
+      &lt;path d="M14.3915 12.9092H15.6958C16.056 12.9092 16.348 13.2144 16.348 13.591V14.9546C16.348 15.3311 16.056 15.6364 15.6958 15.6364H14.3915C14.0313 15.6364 13.7393 15.3311 13.7393 14.9546V13.591C13.7393 13.2144 14.0313 12.9092 14.3915 12.9092ZM14.6088 14.7273H15.4784V13.8183H14.6088V14.7273Z"&gt;&lt;/path&gt;
+      &lt;path d="M17.2173 13.591V14.9546C17.2173 15.3311 17.5092 15.6364 17.8694 15.6364H19.1738C19.534 15.6364 19.826 15.3311 19.826 14.9546V13.591C19.826 13.2144 19.534 12.9092 19.1738 12.9092H17.8694C17.5092 12.9092 17.2173 13.2144 17.2173 13.591ZM18.0868 13.8183H18.9564V14.7273H18.0868V13.8183Z"&gt;&lt;/path&gt;
+      &lt;path d="M11.5653 2.68181C11.5653 2.30526 11.8573 2 12.2175 2H21.3479C21.7081 2 22.0001 2.30526 22.0001 2.68181V21.3182C22.0001 21.6946 21.7081 21.9999 21.3479 21.9999L2.65217 22C2.29199 22 2 21.6947 2 21.3182V15.9969C2 15.5201 2.23824 15.0779 2.6283 14.8307L6.54135 12.3514C6.95686 12.0881 7.47792 12.0881 7.89344 12.3514L11.5653 14.6779V2.68181ZM21.1305 21.0909V2.90909H12.4349V21.0909H15.0436V19.2727C15.0436 18.2686 15.8222 17.4546 16.7827 17.4546C17.7432 17.4546 18.5218 18.2686 18.5218 19.2727V21.0909H21.1305ZM15.9131 19.2727V21.0909H17.6523V19.2727C17.6523 18.7706 17.263 18.3636 16.7827 18.3636C16.3025 18.3636 15.9131 18.7706 15.9131 19.2727ZM7.44274 13.1288C7.30423 13.0411 7.13055 13.0411 6.99204 13.1288L3.079 15.6081C2.94898 15.6905 2.86957 15.8379 2.86957 15.9969V21.0909H5.47838V19.2723C5.47838 18.2682 6.25701 17.4541 7.21751 17.4541C8.178 17.4541 8.95664 18.2682 8.95664 19.2723V21.0909H11.5652V15.9969C11.5652 15.8379 11.4858 15.6905 11.3558 15.6081L7.44274 13.1288ZM7.21751 18.3632C6.73726 18.3632 6.34794 18.7702 6.34794 19.2723V21.0905H8.08708V19.2723C8.08708 18.7702 7.69776 18.3632 7.21751 18.3632Z"&gt;&lt;/path&gt;
+    &lt;/SvgIcon&gt;
+  );
+}
+&nbsp;
+export function ButtonIcon(props: any) {
+  return (
+    &lt;SvgIcon {...props}&gt;
+      &lt;path d="M18.4609 16.8848C18.461 16.9504 18.4481 17.0155 18.423 17.0762C18.3978 17.1368 18.361 17.192 18.3146 17.2384C18.2681 17.2848 18.213 17.3217 18.1523 17.3468C18.0916 17.3719 18.0266 17.3848 17.9609 17.3848H6.89209L10.6538 21.1465C10.701 21.1927 10.7386 21.2479 10.7643 21.3087C10.7901 21.3696 10.8035 21.4349 10.8038 21.501C10.8042 21.5671 10.7914 21.6326 10.7663 21.6937C10.7411 21.7548 10.7041 21.8103 10.6574 21.8571C10.6107 21.9038 10.5552 21.9408 10.494 21.9659C10.4329 21.9911 10.3674 22.0038 10.3014 22.0035C10.2353 22.0032 10.1699 21.9897 10.1091 21.964C10.0482 21.9382 9.99306 21.9007 9.94681 21.8535L5.936 17.8428C5.68226 17.5885 5.53976 17.244 5.53976 16.8848C5.53976 16.5256 5.68226 16.181 5.936 15.9268L9.94678 11.916C10.0409 11.8238 10.1675 11.7725 10.2992 11.7731C10.431 11.7738 10.5571 11.8264 10.6502 11.9196C10.7434 12.0127 10.796 12.1388 10.7967 12.2705C10.7973 12.4023 10.746 12.5289 10.6538 12.623L6.89209 16.3848H17.9609C18.0266 16.3847 18.0916 16.3976 18.1523 16.4228C18.213 16.4479 18.2681 16.4847 18.3146 16.5311C18.361 16.5776 18.3978 16.6327 18.423 16.6934C18.4481 16.7541 18.461 16.8191 18.4609 16.8848ZM6.03906 7.61572H17.1084L13.3462 11.3774C13.299 11.4237 13.2614 11.4788 13.2357 11.5397C13.2099 11.6006 13.1965 11.6659 13.1962 11.732C13.1958 11.7981 13.2086 11.8636 13.2337 11.9247C13.2589 11.9858 13.2959 12.0413 13.3426 12.088C13.3893 12.1348 13.4449 12.1718 13.506 12.1969C13.5671 12.222 13.6326 12.2348 13.6986 12.2345C13.7647 12.2341 13.8301 12.2207 13.8909 12.1949C13.9518 12.1692 14.0069 12.1316 14.0532 12.0844L18.0649 8.0737C18.3183 7.8192 18.4604 7.4747 18.4604 7.1156C18.4603 6.7565 18.3179 6.41207 18.0644 6.1577L14.0532 2.14648C13.9591 2.05429 13.8325 2.00294 13.7008 2.00361C13.569 2.00427 13.4429 2.05689 13.3498 2.15003C13.2566 2.24317 13.204 2.36931 13.2033 2.50103C13.2027 2.63274 13.254 2.7594 13.3462 2.85348L17.1079 6.61568H6.03906C5.90645 6.61568 5.77928 6.66836 5.68551 6.76213C5.59174 6.85589 5.53906 6.98307 5.53906 7.11568C5.53906 7.24829 5.59174 7.37547 5.68551 7.46923C5.77928 7.563 5.90645 7.61568 6.03906 7.61568V7.61572Z"&gt;&lt;/path&gt;
+    &lt;/SvgIcon&gt;
+  );
+}
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2023-05-10T22:35:25.594Z
+            </div>
+        <script src="../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../sorter.js"></script>
+        <script src="../../block-navigation.js"></script>
+    </body>
+</html>
+    

@@ -1,0 +1,409 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for src/components/Itinerary.tsx</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/components</a> Itinerary.tsx</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">0% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>0/2</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">0% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">0% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>0/2</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input oninput="onInput()" type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line low'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
+&nbsp;
+const Itinerary = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  return (</span>
+    &lt;div&gt;
+      &lt;div className="css-1tfkpah"&gt;
+        &lt;div
+          //   required=""
+          className="MuiInputBase-root MuiInput-root MuiInputBase-colorPrimary MuiInputBase-adornedStart css-1cmiyfg"
+        &gt;
+          &lt;label
+            className="MuiInputAdornment-root MuiInputAdornment-positionStart css-n0vqkc"
+            // for="1c5951ee-44b3-4d5a-a0fb-eeef530470b1"
+          &gt;
+            &lt;span className="notranslate"&gt;​&lt;/span&gt;
+            &lt;p className="MuiTypography-root MuiTypography-body2 css-1tli032"&gt;
+              Départ :
+            &lt;/p&gt;
+          &lt;/label&gt;
+          &lt;input
+            aria-invalid="true"
+            aria-describedby="autocomplete_input_visuallyHiddenLabel "
+            // autocomplete="off"
+            id="1c5951ee-44b3-4d5a-a0fb-eeef530470b1"
+            placeholder="D&amp;#39;où partons-nous ?"
+            // required=""
+            type="text"
+            aria-autocomplete="list"
+            aria-expanded="false"
+            aria-haspopup="listbox"
+            aria-owns="autocomplete-3d0685b2-b4d9-401b-a93e-b6b03dd05488"
+            role="combobox"
+            className="MuiInputBase-input MuiInput-input MuiInputBase-inputAdornedStart css-1veqchx"
+            value=""
+          /&gt;
+        &lt;/div&gt;
+        &lt;div className="MuiInputBase-root MuiInput-root MuiInputBase-colorPrimary MuiInputBase-adornedStart MuiInputBase-adornedEnd css-9ttl9g"&gt;
+          &lt;label
+            className="MuiInputAdornment-root MuiInputAdornment-positionStart css-n0vqkc"
+            // for="4910a9e8-5243-434b-98cb-608ade33f2db"
+          &gt;
+            &lt;span className="notranslate"&gt;​&lt;/span&gt;
+            &lt;p className="MuiTypography-root MuiTypography-body2 css-1tli032"&gt;
+              Arrivée :
+            &lt;/p&gt;
+          &lt;/label&gt;
+          &lt;input
+            aria-invalid="false"
+            aria-describedby="autocomplete_input_visuallyHiddenLabel "
+            // autocomplete="off"
+            id="4910a9e8-5243-434b-98cb-608ade33f2db"
+            placeholder="Où allons-nous ?"
+            type="text"
+            aria-autocomplete="list"
+            aria-expanded="false"
+            aria-haspopup="listbox"
+            aria-owns="autocomplete-d60e03c8-7b66-4151-895a-4ddc20d80358"
+            role="combobox"
+            className="MuiInputBase-input MuiInput-input MuiInputBase-inputAdornedStart MuiInputBase-inputAdornedEnd css-1veqchx"
+            value="Paris"
+          /&gt;
+          &lt;div className="MuiInputAdornment-root MuiInputAdornment-positionEnd css-oqttl9"&gt;
+            &lt;button
+              className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-gv7szl"
+              //   tabindex="0"
+              type="button"
+              aria-label="Suppression de la valeur saisie"
+            &gt;
+              &lt;svg
+                width="24"
+                fill="currentColor"
+                height="24"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              &gt;
+                &lt;path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M19 6.4L17.6 5L12 10.6L6.4 5L5 6.4L10.6 12L5 17.6L6.4 19L12 13.4L17.6 19L19 17.6L13.4 12L19 6.4Z"
+                &gt;&lt;/path&gt;
+              &lt;/svg&gt;
+            &lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;hr
+          className="MuiDivider-root MuiDivider-fullWidth css-v2fpol"
+          aria-hidden="true"
+        /&gt;
+        &lt;button
+          className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-1d915nr"
+          //   tabindex="0"
+          type="button"
+          aria-label="Intervertir la gare de départ et la gare d’arrivée vide Paris"
+        &gt;
+          &lt;svg
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            className="css-15zf9j"
+          &gt;
+            &lt;path d="M18.4609 16.8848C18.461 16.9504 18.4481 17.0155 18.423 17.0762C18.3978 17.1368 18.361 17.192 18.3146 17.2384C18.2681 17.2848 18.213 17.3217 18.1523 17.3468C18.0916 17.3719 18.0266 17.3848 17.9609 17.3848H6.89209L10.6538 21.1465C10.701 21.1927 10.7386 21.2479 10.7643 21.3087C10.7901 21.3696 10.8035 21.4349 10.8038 21.501C10.8042 21.5671 10.7914 21.6326 10.7663 21.6937C10.7411 21.7548 10.7041 21.8103 10.6574 21.8571C10.6107 21.9038 10.5552 21.9408 10.494 21.9659C10.4329 21.9911 10.3674 22.0038 10.3014 22.0035C10.2353 22.0032 10.1699 21.9897 10.1091 21.964C10.0482 21.9382 9.99306 21.9007 9.94681 21.8535L5.936 17.8428C5.68226 17.5885 5.53976 17.244 5.53976 16.8848C5.53976 16.5256 5.68226 16.181 5.936 15.9268L9.94678 11.916C10.0409 11.8238 10.1675 11.7725 10.2992 11.7731C10.431 11.7738 10.5571 11.8264 10.6502 11.9196C10.7434 12.0127 10.796 12.1388 10.7967 12.2705C10.7973 12.4023 10.746 12.5289 10.6538 12.623L6.89209 16.3848H17.9609C18.0266 16.3847 18.0916 16.3976 18.1523 16.4228C18.213 16.4479 18.2681 16.4847 18.3146 16.5311C18.361 16.5776 18.3978 16.6327 18.423 16.6934C18.4481 16.7541 18.461 16.8191 18.4609 16.8848ZM6.03906 7.61572H17.1084L13.3462 11.3774C13.299 11.4237 13.2614 11.4788 13.2357 11.5397C13.2099 11.6006 13.1965 11.6659 13.1962 11.732C13.1958 11.7981 13.2086 11.8636 13.2337 11.9247C13.2589 11.9858 13.2959 12.0413 13.3426 12.088C13.3893 12.1348 13.4449 12.1718 13.506 12.1969C13.5671 12.222 13.6326 12.2348 13.6986 12.2345C13.7647 12.2341 13.8301 12.2207 13.8909 12.1949C13.9518 12.1692 14.0069 12.1316 14.0532 12.0844L18.0649 8.0737C18.3183 7.8192 18.4604 7.4747 18.4604 7.1156C18.4603 6.7565 18.3179 6.41207 18.0644 6.1577L14.0532 2.14648C13.9591 2.05429 13.8325 2.00294 13.7008 2.00361C13.569 2.00427 13.4429 2.05689 13.3498 2.15003C13.2566 2.24317 13.204 2.36931 13.2033 2.50103C13.2027 2.63274 13.254 2.7594 13.3462 2.85348L17.1079 6.61568H6.03906C5.90645 6.61568 5.77928 6.66836 5.68551 6.76213C5.59174 6.85589 5.53906 6.98307 5.53906 7.11568C5.53906 7.24829 5.59174 7.37547 5.68551 7.46923C5.77928 7.563 5.90645 7.61568 6.03906 7.61568V7.61572Z"&gt;&lt;/path&gt;
+          &lt;/svg&gt;
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+};
+&nbsp;
+export default Itinerary;
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2023-05-10T22:35:25.594Z
+            </div>
+        <script src="../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../sorter.js"></script>
+        <script src="../../block-navigation.js"></script>
+    </body>
+</html>
+    

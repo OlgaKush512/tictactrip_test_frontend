@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1683758125650" clover="3.2.0">
+  <project timestamp="1683758125651" name="All files">
+    <metrics statements="174" coveredstatements="153" conditionals="62" coveredconditionals="46" methods="48" coveredmethods="40" elements="284" coveredelements="239" complexity="0" loc="174" ncloc="174" packages="4" files="11" classes="11"/>
+    <package name="src">
+      <metrics statements="4" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="App.tsx" path="/home/olga/Desktop/tictactrip_test_frontend/src/App.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+      </file>
+      <file name="index.tsx" path="/home/olga/Desktop/tictactrip_test_frontend/src/index.tsx">
+        <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components">
+      <metrics statements="157" coveredstatements="138" conditionals="58" coveredconditionals="43" methods="39" coveredmethods="31"/>
+      <file name="Itinerary.tsx" path="/home/olga/Desktop/tictactrip_test_frontend/src/components/Itinerary.tsx">
+        <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+      </file>
+      <file name="Itinerary1.tsx" path="/home/olga/Desktop/tictactrip_test_frontend/src/components/Itinerary1.tsx">
+        <metrics statements="78" coveredstatements="73" conditionals="32" coveredconditionals="25" methods="17" coveredmethods="17"/>
+        <line num="33" count="2" type="stmt"/>
+        <line num="34" count="32" type="stmt"/>
+        <line num="35" count="32" type="stmt"/>
+        <line num="37" count="32" type="stmt"/>
+        <line num="41" count="32" type="stmt"/>
+        <line num="47" count="32" type="stmt"/>
+        <line num="53" count="32" type="stmt"/>
+        <line num="56" count="10" type="stmt"/>
+        <line num="63" count="32" type="stmt"/>
+        <line num="66" count="12" type="stmt"/>
+        <line num="75" count="32" type="stmt"/>
+        <line num="77" count="32" type="stmt"/>
+        <line num="78" count="31" type="cond" truecount="2" falsecount="0"/>
+        <line num="79" count="20" type="stmt"/>
+        <line num="80" count="20" type="cond" truecount="1" falsecount="1"/>
+        <line num="81" count="0" type="stmt"/>
+        <line num="85" count="0" type="stmt"/>
+        <line num="87" count="20" type="stmt"/>
+        <line num="89" count="20" type="stmt"/>
+        <line num="91" count="31" type="stmt"/>
+        <line num="102" count="32" type="stmt"/>
+        <line num="104" count="32" type="stmt"/>
+        <line num="105" count="31" type="cond" truecount="2" falsecount="0"/>
+        <line num="106" count="26" type="stmt"/>
+        <line num="107" count="26" type="cond" truecount="1" falsecount="1"/>
+        <line num="108" count="0" type="stmt"/>
+        <line num="110" count="26" type="stmt"/>
+        <line num="112" count="26" type="stmt"/>
+        <line num="114" count="31" type="stmt"/>
+        <line num="122" count="32" type="stmt"/>
+        <line num="123" count="14" type="cond" truecount="2" falsecount="0"/>
+        <line num="124" count="9" type="stmt"/>
+        <line num="125" count="9" type="stmt"/>
+        <line num="126" count="9" type="stmt"/>
+        <line num="128" count="14" type="cond" truecount="2" falsecount="0"/>
+        <line num="129" count="14" type="stmt"/>
+        <line num="138" count="32" type="stmt"/>
+        <line num="139" count="16" type="cond" truecount="2" falsecount="0"/>
+        <line num="140" count="11" type="stmt"/>
+        <line num="141" count="11" type="stmt"/>
+        <line num="142" count="11" type="stmt"/>
+        <line num="144" count="16" type="cond" truecount="2" falsecount="0"/>
+        <line num="145" count="16" type="stmt"/>
+        <line num="153" count="32" type="stmt"/>
+        <line num="155" count="32" type="stmt"/>
+        <line num="156" count="32" type="stmt"/>
+        <line num="158" count="32" type="stmt"/>
+        <line num="162" count="32" type="stmt"/>
+        <line num="164" count="2" type="stmt"/>
+        <line num="165" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="166" count="2" type="stmt"/>
+        <line num="167" count="2" type="stmt"/>
+        <line num="171" count="32" type="stmt"/>
+        <line num="173" count="32" type="stmt"/>
+        <line num="174" count="32" type="stmt"/>
+        <line num="176" count="32" type="stmt"/>
+        <line num="180" count="32" type="stmt"/>
+        <line num="182" count="2" type="stmt"/>
+        <line num="183" count="2" type="stmt"/>
+        <line num="184" count="2" type="stmt"/>
+        <line num="185" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="187" count="2" type="stmt"/>
+        <line num="191" count="32" type="stmt"/>
+        <line num="192" count="32" type="stmt"/>
+        <line num="193" count="32" type="stmt"/>
+        <line num="194" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="195" count="3" type="stmt"/>
+        <line num="204" count="32" type="stmt"/>
+        <line num="205" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="206" count="0" type="stmt"/>
+        <line num="214" count="32" type="stmt"/>
+        <line num="215" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="216" count="0" type="stmt"/>
+        <line num="220" count="32" type="stmt"/>
+        <line num="310" count="1" type="stmt"/>
+        <line num="311" count="1" type="stmt"/>
+        <line num="312" count="1" type="stmt"/>
+        <line num="313" count="1" type="stmt"/>
+      </file>
+      <file name="OptionsCity.tsx" path="/home/olga/Desktop/tictactrip_test_frontend/src/components/OptionsCity.tsx">
+        <metrics statements="23" coveredstatements="20" conditionals="6" coveredconditionals="4" methods="5" coveredmethods="3"/>
+        <line num="18" count="5" type="stmt"/>
+        <line num="33" count="14" type="stmt"/>
+        <line num="35" count="14" type="stmt"/>
+        <line num="37" count="14" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="42" count="14" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="46" count="14" type="stmt"/>
+        <line num="51" count="14" type="stmt"/>
+        <line num="52" count="14" type="stmt"/>
+        <line num="53" count="14" type="stmt"/>
+        <line num="54" count="14" type="stmt"/>
+        <line num="55" count="16" type="stmt"/>
+        <line num="56" count="16" type="cond" truecount="2" falsecount="0"/>
+        <line num="58" count="14" type="stmt"/>
+        <line num="59" count="14" type="stmt"/>
+        <line num="63" count="14" type="stmt"/>
+        <line num="65" count="14" type="stmt"/>
+        <line num="72" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="73" count="0" type="stmt"/>
+        <line num="79" count="1" type="stmt"/>
+        <line num="85" count="1" type="stmt"/>
+        <line num="86" count="1" type="stmt"/>
+      </file>
+      <file name="PoperBoard.tsx" path="/home/olga/Desktop/tictactrip_test_frontend/src/components/PoperBoard.tsx">
+        <metrics statements="7" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="3"/>
+        <line num="10" count="4" type="stmt"/>
+        <line num="41" count="74" type="stmt"/>
+        <line num="43" count="74" type="stmt"/>
+        <line num="44" count="0" type="stmt"/>
+        <line num="47" count="74" type="stmt"/>
+        <line num="57" count="56" type="stmt"/>
+        <line num="83" count="18" type="stmt"/>
+      </file>
+      <file name="SearchBar.tsx" path="/home/olga/Desktop/tictactrip_test_frontend/src/components/SearchBar.tsx">
+        <metrics statements="38" coveredstatements="31" conditionals="20" coveredconditionals="14" methods="10" coveredmethods="7"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="17" count="8" type="stmt"/>
+        <line num="18" count="8" type="stmt"/>
+        <line num="24" count="8" type="stmt"/>
+        <line num="25" count="8" type="stmt"/>
+        <line num="26" count="8" type="stmt"/>
+        <line num="27" count="8" type="stmt"/>
+        <line num="28" count="8" type="stmt"/>
+        <line num="29" count="8" type="stmt"/>
+        <line num="31" count="8" type="stmt"/>
+        <line num="34" count="8" type="stmt"/>
+        <line num="37" count="8" type="stmt"/>
+        <line num="40" count="8" type="stmt"/>
+        <line num="41" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="46" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="51" count="8" type="stmt"/>
+        <line num="52" count="8" type="cond" truecount="4" falsecount="0"/>
+        <line num="53" count="7" type="stmt"/>
+        <line num="54" count="7" type="stmt"/>
+        <line num="59" count="8" type="stmt"/>
+        <line num="62" count="1" type="stmt"/>
+        <line num="71" count="8" type="stmt"/>
+        <line num="72" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="73" count="0" type="stmt"/>
+        <line num="74" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="75" count="0" type="stmt"/>
+        <line num="78" count="8" type="stmt"/>
+        <line num="79" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="80" count="3" type="stmt"/>
+        <line num="84" count="8" type="stmt"/>
+        <line num="85" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="86" count="0" type="stmt"/>
+        <line num="100" count="8" type="stmt"/>
+        <line num="153" count="0" type="stmt"/>
+        <line num="158" count="0" type="stmt"/>
+      </file>
+      <file name="stylesItinerary.tsx" path="/home/olga/Desktop/tictactrip_test_frontend/src/components/stylesItinerary.tsx">
+        <metrics statements="9" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="32" type="stmt"/>
+        <line num="28" count="2" type="stmt"/>
+        <line num="35" count="2" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="58" count="2" type="stmt"/>
+        <line num="77" count="2" type="stmt"/>
+        <line num="84" count="2" type="stmt"/>
+        <line num="116" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.context">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="CityContext.tsx" path="/home/olga/Desktop/tictactrip_test_frontend/src/context/CityContext.tsx">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="4" count="5" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.tools">
+      <metrics statements="12" coveredstatements="12" conditionals="4" coveredconditionals="3" methods="7" coveredmethods="7"/>
+      <file name="fonctions.tsx" path="/home/olga/Desktop/tictactrip_test_frontend/src/tools/fonctions.tsx">
+        <metrics statements="10" coveredstatements="10" conditionals="4" coveredconditionals="3" methods="5" coveredmethods="5"/>
+        <line num="11" count="10" type="cond" truecount="1" falsecount="1"/>
+        <line num="12" count="10" type="stmt"/>
+        <line num="19" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="33" count="5" type="stmt"/>
+        <line num="34" count="31" type="stmt"/>
+        <line num="35" count="31" type="stmt"/>
+      </file>
+      <file name="imagesSVG.tsx" path="/home/olga/Desktop/tictactrip_test_frontend/src/tools/imagesSVG.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="4" count="14" type="stmt"/>
+        <line num="18" count="32" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

@@ -79,10 +79,10 @@ const Itinerary = () => {
       let url: string = '';
       if (destination.unique_name !== '') {
         fetchData(
-          `https://api.comparatrip.eu/cities/autocomplete/?q=${destination.unique_name} `,
+          `https://api.comparatrip.eu/cities/autocomplete/?q=${destination.unique_name}`,
           setDataPopDep
         );
-        url = `https://api.comparatrip.eu/cities/popular/to/${destination.unique_name}/5 `;
+        url = `https://api.comparatrip.eu/cities/popular/to/${destination.unique_name}/5`;
       } else {
         url = `https://api.comparatrip.eu/cities/popular/5`;
       }
@@ -93,7 +93,7 @@ const Itinerary = () => {
       local_name: '',
       unique_name: '',
     });
-  }, [popularDeparture, destination, departure, setCityName]);
+  }, [popularDeparture, destination.unique_name, setCityName]);
 
   /**Fetch popular points of destination if a departure is set,
    * otherwise fetch popular cities
@@ -116,7 +116,7 @@ const Itinerary = () => {
       local_name: '',
       unique_name: '',
     });
-  }, [popularDestination, destination, departure, setCityName]);
+  }, [popularDestination, departure.unique_name, setCityName]);
 
   // Fetch city data based on input for departure
   useEffect(() => {

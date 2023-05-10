@@ -147,7 +147,7 @@ const Itinerary = () => {
       // if (departure.length < 2)
       setAnchorElDeparture(event.currentTarget);
       setOpenDeparture((prev) => placementDeparture !== newPlacement || !prev);
-      setPlacementDeparture(newPlacement);
+      setPlacementDeparture('bottom-start');
       setPopularDeparture(true);
     };
 
@@ -168,7 +168,7 @@ const Itinerary = () => {
       setOpenDestination(
         (prev) => placementDestination !== newPlacement || !prev
       );
-      setPlacementDestination(newPlacement);
+      setPlacementDestination('bottom-start');
     };
 
   /*Width Popper*/
@@ -207,38 +207,41 @@ const Itinerary = () => {
       style={{ minHeight: '100vh', minWidth: 'auto' }}
     >
       <Container>
-        {/* <Grid container columns={10} justifyContent="center" mt={10} spacing={2}> */}
         <ItineraryUniversalBox
-          style={{ marginTop: '50px' }}
+          // style={{ marginTop: '50px' }}
           className="itinerary-universal"
         >
           <BlockFromTo ref={inputRef}>
-            <PoperBoard
-              setOpen={setOpenDeparture}
-              popperWidth={popperWidth}
-              objective={popularDeparture ? 'Départs Populaires' : 'Villes'}
-              data={dataPopDep}
-              setChoosen={setChoosenDeparture}
-              open={openDeparture}
-              anchorEl={anchorElDeparture}
-              placement={placementDeparture}
-              isContextUsed={false}
-              setLocation={setDeparture}
-            />
-            <PoperBoard
-              setOpen={setOpenDestination}
-              popperWidth={popperWidth}
-              objective={
-                popularDestination ? 'Destination Populaires' : 'Villes'
-              }
-              data={dataPopDes}
-              setChoosen={setChoosenDestination}
-              open={openDestination}
-              anchorEl={anchorElDestination}
-              placement={placementDestination}
-              isContextUsed={false}
-              setLocation={setDestination}
-            />
+            <div style={{ position: 'relative' }}>
+              <PoperBoard
+                setOpen={setOpenDeparture}
+                popperWidth={popperWidth}
+                objective={popularDeparture ? 'Départs Populaires' : 'Villes'}
+                data={dataPopDep}
+                setChoosen={setChoosenDeparture}
+                open={openDeparture}
+                anchorEl={anchorElDeparture}
+                placement={'bottom-start'}
+                isContextUsed={false}
+                setLocation={setDeparture}
+                anchorReference="anchorPosition"
+                anchorPosition={{ top: 200, left: 401 }}
+              />
+              <PoperBoard
+                setOpen={setOpenDestination}
+                popperWidth={popperWidth}
+                objective={
+                  popularDestination ? 'Destination Populaires' : 'Villes'
+                }
+                data={dataPopDes}
+                setChoosen={setChoosenDestination}
+                open={openDestination}
+                anchorEl={anchorElDestination}
+                placement={'bottom-start'}
+                isContextUsed={false}
+                setLocation={setDestination}
+              />
+            </div>
             <Input
               placeholder="D'où partons-nous ?"
               value={departure}
@@ -294,12 +297,7 @@ const Itinerary = () => {
                 setDestination(departure);
               }}
             >
-              <ButtonIcon
-                style={buttonExchangeSVG}
-                variant="contained"
-                size="large"
-                sx={{ zIndex: 2 }}
-              />
+              <ButtonIcon sx={buttonExchangeSVG} />
             </IconButton>
           </BlockFromTo>
         </ItineraryUniversalBox>

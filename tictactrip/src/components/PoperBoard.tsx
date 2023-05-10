@@ -42,7 +42,7 @@ Passed to the OptionsCity component via props.
 
   const onClose = () => {
     setOpen(false);
-    setChoosen(true)
+    setChoosen(true);
   };
 
   return (

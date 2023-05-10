@@ -1,4 +1,10 @@
-import { Box, BoxProps, SvgIcon, TextField, TextFieldProps } from '@mui/material';
+import {
+  Box,
+  BoxProps,
+  SvgIcon,
+  TextField,
+  TextFieldProps,
+} from '@mui/material';
 import { styled, useTheme } from '@mui/material/styles';
 
 // const theme = useTheme();
@@ -100,7 +106,7 @@ export const blockUniversalTo: React.CSSProperties = {
   textOverflow: ' ellipsis',
 };
 
-export const buttonExchange: React.CSSProperties = {
+export const buttonExchange = {
   display: 'inline-flex',
   // -webkit-box-align: 'center',
   alignItems: 'center',
@@ -132,11 +138,15 @@ export const buttonExchange: React.CSSProperties = {
   top: '50%',
   transform: 'translateY(-50%)',
   zIndex: 2,
+  '&:hover': { backgroundColor: '#006179' },
 };
 
-export const buttonExchangeSVG: React.CSSProperties = {
+export const buttonExchangeSVG = {
   fill: 'rgb(12, 19, 31)',
+  padding: '1rem',
   transform: ' rotate(90deg)',
   height: '1.5rem',
   width: '1.5rem',
+  zIndex: 2,
+  '&:hover': { fill: '#fff' },
 };

@@ -10,6 +10,7 @@ describe('OptionsCity', () => {
     setChoosen: jest.fn(),
     isContextUsed: false,
     setLocation: jest.fn(),
+    setOpen: jest.fn(),
   };
 
   beforeEach(() => {

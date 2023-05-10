@@ -129,6 +129,7 @@ export const SearchBar = () => {
               placement={placement}
               isContextUsed={true}
               setLocation={setDestination}
+              choosen={choosen}
             />
             <input
               className="universal-search__input-search"

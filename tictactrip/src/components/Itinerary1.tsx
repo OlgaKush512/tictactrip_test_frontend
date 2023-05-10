@@ -240,8 +240,7 @@ const Itinerary = () => {
                 placement={'bottom-start'}
                 isContextUsed={false}
                 setLocation={setDeparture}
-                anchorReference="anchorPosition"
-                anchorPosition={{ top: 200, left: 401 }}
+                choosen={choosenDeparture}
               />
               <PoperBoard
                 setOpen={setOpenDestination}
@@ -256,6 +255,7 @@ const Itinerary = () => {
                 placement={'bottom-start'}
                 isContextUsed={false}
                 setLocation={setDestination}
+                choosen={choosenDestination}
               />
             </div>
             <Input

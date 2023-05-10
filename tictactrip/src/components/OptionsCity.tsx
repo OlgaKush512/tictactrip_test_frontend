@@ -3,6 +3,7 @@ import { Stack, Typography } from '@mui/material';
 import CityContext from '../context/CityContext';
 import { parsingCity } from '../tools/fonctions';
 import { CityIcon } from '../tools/imagesSVG';
+import { SettingsInputComponent } from '@mui/icons-material';
 
 /**
 The OptionsCity component displays an option for a city in a dropdown list.
@@ -21,9 +22,16 @@ const OptionsCity = (props: {
   isContextUsed: boolean;
   setLocation: any;
   unique_name: string;
+  setOpen: any;
 }) => {
-  const { local_name, setChoosen, isContextUsed, setLocation, unique_name } =
-    props;
+  const {
+    local_name,
+    setChoosen,
+    isContextUsed,
+    setLocation,
+    unique_name,
+    setOpen,
+  } = props;
 
   const [isCursorOn, setIsCursorOn] = useState<boolean>(false);
   //Event handler when the mouse enters the option element.
@@ -76,6 +84,7 @@ Generates the location string for the city.
           });
         }
         setChoosen(true);
+        setOpen(false);
       }}
       style={{
         backgroundColor: isCursorOn ? 'rgb(229, 229, 239)' : 'white',

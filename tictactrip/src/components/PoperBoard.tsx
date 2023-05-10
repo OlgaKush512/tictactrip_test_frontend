@@ -2,6 +2,7 @@ import { Fade, Paper, Popper, Typography } from '@mui/material';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import OptionsCity from './OptionsCity';
 import { City } from '../tools/fonctions';
+import { useEffect } from 'react';
 /**
 PoperBoard Component
 The PoperBoard component is used to display a popper with a list of cities.
@@ -33,6 +34,7 @@ Passed to the OptionsCity component via props.
     objective,
     data,
     setChoosen,
+    choosen,
     open,
     anchorEl,
     placement,
@@ -88,6 +90,7 @@ Passed to the OptionsCity component via props.
                     setChoosen={setChoosen}
                     isContextUsed={isContextUsed}
                     setLocation={setLocation}
+                    setOpen={setOpen}
                   />
                 ))}
               </div>

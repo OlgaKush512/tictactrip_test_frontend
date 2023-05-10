@@ -20,8 +20,10 @@ const OptionsCity = (props: {
   setChoosen: any;
   isContextUsed: boolean;
   setLocation: any;
+  unique_name: string;
 }) => {
-  const { local_name, setChoosen, isContextUsed, setLocation } = props;
+  const { local_name, setChoosen, isContextUsed, setLocation, unique_name } =
+    props;
 
   const [isCursorOn, setIsCursorOn] = useState<boolean>(false);
   //Event handler when the mouse enters the option element.
@@ -61,9 +63,17 @@ Generates the location string for the city.
       data-testid="option"
       onClick={() => {
         if (isContextUsed === true) {
-          setCityName(local_name);
+          setCityName({
+            city_id: 0,
+            local_name: local_name,
+            unique_name: unique_name,
+          });
         } else {
-          setLocation(local_name);
+          setLocation({
+            city_id: 0,
+            local_name: local_name,
+            unique_name: unique_name,
+          });
         }
         setChoosen(true);
       }}

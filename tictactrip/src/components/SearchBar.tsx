@@ -15,7 +15,11 @@ import './SearchBar.css';
 export const SearchBar = () => {
   // State variables
   const [data, setData] = useState<City[]>([]); // State for city data
-  const [destination, setDestination] = useState<string>(''); // State for destination input
+  const [destination, setDestination] = useState<City>({
+    city_id: 0,
+    local_name: '',
+    unique_name: '',
+  }); // State for destination input
   /**State for popular cities; If true , use API 5popular cities*/
   const [popularCities, setPopularCities] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null); //State for popper
@@ -34,35 +38,38 @@ export const SearchBar = () => {
 
   //API autocomplete
   useEffect(() => {
-    if (destination.length >= 2) {
+    if (destination.local_name.length >= 2) {
       setPopularCities(false);
-      const url = `https://api.comparatrip.eu/cities/autocomplete/?q=${destination} `;
+      const url = `https://api.comparatrip.eu/cities/autocomplete/?q=${destination.local_name} `;
       fetchData(url, setData);
     }
-    if (destination.length < 2) setPopularCities(true);
+    if (destination.local_name.length < 2) setPopularCities(true);
   }, [destination]);
 
   //API clic; 5 popular cities
 
   useEffect(() => {
-    if (popularCities === true || destination.length < 2) {
+    if (popularCities === true || destination.local_name.length < 2) {
       const url = `https://api.comparatrip.eu/cities/popular/5`;
       fetchData(url, setData);
     }
-  }, [popularCities]);
+  }, [popularCities, destination.local_name]);
 
   // Handle input change
   const handleInputChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ): void => {
-    setDestination(event.target.value);
+    setDestination({
+      ...destination,
+      local_name: event.target.value,
+    });
   };
 
   // Handle click event for the popper
 
   const handleClick =
     (newPlacement: PopperPlacementType) => (event: MouseEvent<HTMLElement>) => {
-      if (destination.length < 2) setPopularCities(true);
+      if (destination.local_name.length < 2) setPopularCities(true);
       setAnchorEl(event.currentTarget);
       setOpen((prev) => placement !== newPlacement || !prev);
       setPlacement(newPlacement);
@@ -78,17 +85,17 @@ export const SearchBar = () => {
     if (choosen === true) {
       navigate('/itinerary');
     }
-  }, [choosen]);
+  }, [choosen, navigate]);
   // Handle clic on input for Blur effect
 
-  let classBlur = '';
-  useEffect(() => {
-    if (open === true) {
-      classBlur = 'universal-search__backdrop';
-    } else {
-      classBlur = 'universal-search__input-search';
-    }
-  }, [open]);
+  // let classBlur = '';
+  // useEffect(() => {
+  //   if (open === true) {
+  //     classBlur = 'universal-search__backdrop';
+  //   } else {
+  //     classBlur = 'universal-search__input-search';
+  //   }
+  // }, [open]);
 
   return (
     <div className="block-universal-search" data-testid="non-tooltip">
@@ -97,7 +104,7 @@ export const SearchBar = () => {
           Recherchez vos voyages, trajets courts et bien plus encore...
         </h1>
       </div>
-      <div role="header"
+      <div
         className="universal-search"
         id="universal-search"
         data-test="search-autocomplete"
@@ -131,7 +138,11 @@ export const SearchBar = () => {
               placeholder="Une destination, demande..."
               autoComplete="off"
               onClick={handleClick('bottom-start')}
-              value={cityName !== '' ? cityName : destination}
+              value={
+                cityName.local_name !== ''
+                  ? cityName.local_name
+                  : destination.local_name
+              }
               onChange={handleInputChange}
             />
             <button
@@ -139,7 +150,11 @@ export const SearchBar = () => {
               type="submit"
               value="Rechercher"
               onClick={() => {
-                setCityName(destination);
+                setCityName({
+                  city_id: 0,
+                  local_name: destination.local_name,
+                  unique_name: '',
+                });
                 navigate('/itinerary');
               }}
             ></button>

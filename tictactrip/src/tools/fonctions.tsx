@@ -1,6 +1,7 @@
 export interface City {
   city_id: number;
   local_name: string;
+  unique_name: string;
 }
 
 export function fetchData(

@@ -84,6 +84,7 @@ Passed to the OptionsCity component via props.
                   <OptionsCity
                     key={city.city_id}
                     local_name={city.local_name}
+                    unique_name={city.unique_name}
                     setChoosen={setChoosen}
                     isContextUsed={isContextUsed}
                     setLocation={setLocation}

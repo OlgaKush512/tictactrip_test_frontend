@@ -6,6 +6,7 @@ import CityContext from '../context/CityContext';
 describe('OptionsCity', () => {
   const props = {
     local_name: 'Paris, Île-de-France, France',
+    unique_name: 'paris',
     setChoosen: jest.fn(),
     isContextUsed: false,
     setLocation: jest.fn(),

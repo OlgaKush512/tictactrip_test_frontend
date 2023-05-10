@@ -1,13 +1,10 @@
 import { MouseEvent, useContext, useEffect, useRef, useState } from 'react';
 import {
-  TextField,
   InputAdornment,
   IconButton,
-  Typography,
   PopperPlacementType,
   Input,
   Container,
-  Grid,
   Box,
 } from '@mui/material';
 import CityContext from '../context/CityContext';
@@ -15,14 +12,12 @@ import './Itinerary.css';
 import {
   ItineraryUniversalBox,
   BlockFromTo,
-  blockUniversalTo,
   buttonExchange,
   buttonExchangeSVG,
 } from './stylesItinerary';
 import PoperBoard from './PoperBoard';
 import { City, fetchData } from '../tools/fonctions';
 import { ButtonIcon } from '../tools/imagesSVG';
-import { parsingCity } from '../tools/fonctions';
 
 /**
  * Itinerary component allows users to select departure and destination cities for travel.
@@ -43,23 +38,35 @@ const Itinerary = () => {
 
   // Input state for departure and destination
 
-  const [departure, setDeparture] = useState<string>('');
+  const [departure, setDeparture] = useState<City>({
+    city_id: 0,
+    local_name: '',
+    unique_name: '',
+  });
 
-  const [destination, setDestination] = useState<string>(
-    cityName !== '' ? cityName : ''
+  const [destination, setDestination] = useState<City>(
+    cityName.local_name !== ''
+      ? cityName
+      : { city_id: 0, local_name: '', unique_name: '' }
   );
   // Handle input change for departure
   const handleInputChangeDeparture = (
     event: React.ChangeEvent<HTMLInputElement>
   ): void => {
-    setDeparture(event.target.value);
+    setDeparture({
+      ...departure,
+      local_name: event.target.value,
+    });
   };
 
   // Handle input change for destination
   const handleInputChangeDestination = (
     event: React.ChangeEvent<HTMLInputElement>
   ): void => {
-    setDestination(event.target.value);
+    setDestination({
+      ...destination,
+      local_name: event.target.value,
+    });
   };
   /**Fetch popular points of departure if a destination is set,
    * otherwise fetch popular cities
@@ -68,23 +75,24 @@ const Itinerary = () => {
   const [popularDeparture, setPopularDeparture] = useState<boolean>(false);
 
   useEffect(() => {
-    if (popularDeparture === true || departure.length < 2) {
+    if (popularDeparture === true /*&& departure.local_name.length < 2*/) {
       let url: string = '';
-      if (destination !== '') {
-        const parsedCity = parsingCity(destination);
-        if (parsedCity && parsedCity.length > 0) {
-          const city = parsedCity[0];
-          console.log(city);
-          url = `https://api.comparatrip.eu/cities/popular/to/${city}/5 `;
-          console.log(url);
-        }
+      if (destination.unique_name !== '') {
+        fetchData(
+          `https://api.comparatrip.eu/cities/autocomplete/?q=${destination.unique_name} `,
+          setDataPopDep
+        );
+        url = `https://api.comparatrip.eu/cities/popular/to/${destination.unique_name}/5 `;
       } else {
         url = `https://api.comparatrip.eu/cities/popular/5`;
       }
-
       fetchData(url, setDataPopDep);
     }
-    setCityName('');
+    setCityName({
+      city_id: 0,
+      local_name: '',
+      unique_name: '',
+    });
   }, [popularDeparture, destination, departure, setCityName]);
 
   /**Fetch popular points of destination if a departure is set,
@@ -94,43 +102,51 @@ const Itinerary = () => {
   const [popularDestination, setPopularDestination] = useState<boolean>(false);
 
   useEffect(() => {
-    if (popularDestination === true || destination.length < 2) {
+    if (popularDestination === true /*|| destination.local_name.length < 2*/) {
       let url: string = '';
-      if (departure !== '') {
-        const parsedCity = parsingCity(departure);
-        if (parsedCity && parsedCity.length > 0) {
-          const city = parsedCity[0];
-          url = `https://api.comparatrip.eu/cities/popular/from/${city}/5 `;
-        }
+      if (departure.unique_name !== '') {
+        url = `https://api.comparatrip.eu/cities/popular/from/${departure.unique_name}/5 `;
       } else {
         url = `https://api.comparatrip.eu/cities/popular/5`;
       }
       fetchData(url, setDataPopDes);
     }
-    setCityName('');
+    setCityName({
+      city_id: 0,
+      local_name: '',
+      unique_name: '',
+    });
   }, [popularDestination, destination, departure, setCityName]);
 
   // Fetch city data based on input for departure
   useEffect(() => {
-    if (departure.length >= 2) {
+    if (departure.local_name.length >= 2) {
       setPopularDeparture(false);
-      const url = `https://api.comparatrip.eu/cities/autocomplete/?q=${departure} `;
+      const url = `https://api.comparatrip.eu/cities/autocomplete/?q=${departure.local_name} `;
       fetchData(url, setDataPopDep);
     }
-    if (departure.length < 2) setPopularDeparture(true);
-    setCityName('');
+    if (departure.local_name.length < 2) setPopularDeparture(true);
+    setCityName({
+      city_id: 0,
+      local_name: '',
+      unique_name: '',
+    });
   }, [departure, setCityName]);
 
   // Fetch city data based on input for destination
 
   useEffect(() => {
-    if (destination.length >= 2) {
+    if (destination.local_name.length >= 2) {
       setPopularDestination(false);
-      const url = `https://api.comparatrip.eu/cities/autocomplete/?q=${destination} `;
+      const url = `https://api.comparatrip.eu/cities/autocomplete/?q=${destination.local_name} `;
       fetchData(url, setDataPopDes);
     }
-    if (destination.length < 2) setPopularDestination(true);
-    setCityName('');
+    if (destination.local_name.length < 2) setPopularDestination(true);
+    setCityName({
+      city_id: 0,
+      local_name: '',
+      unique_name: '',
+    });
   }, [destination, setCityName]);
 
   /*Popper Departure*/
@@ -244,7 +260,7 @@ const Itinerary = () => {
             </div>
             <Input
               placeholder="D'où partons-nous ?"
-              value={departure}
+              value={departure.local_name}
               onChange={handleInputChangeDeparture}
               onClick={handleClickDeparture('bottom-start')}
               autoComplete="off"
@@ -267,7 +283,7 @@ const Itinerary = () => {
             />
             <Input
               placeholder="Où allons-nous ?"
-              value={destination}
+              value={destination.local_name}
               onChange={handleInputChangeDestination}
               onClick={handleClickDestination('bottom-start')}
               autoComplete="off"
@@ -293,8 +309,10 @@ const Itinerary = () => {
             <IconButton
               sx={buttonExchange}
               onClick={() => {
-                setDeparture(destination);
-                setDestination(departure);
+                const tmp_dest: City = { ...destination };
+                const tmp_dept: City = { ...departure };
+                setDeparture(tmp_dest);
+                setDestination(tmp_dept);
               }}
             >
               <ButtonIcon sx={buttonExchangeSVG} />

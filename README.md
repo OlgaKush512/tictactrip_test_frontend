@@ -32,11 +32,13 @@ This will launch the application in your browser at http://localhost:3000.
 
 The project utilizes three APIs to provide autocomplete suggestions for the search bar:
 
-1. Retrieves city suggestions based on user input. Replace "par" with the user's input.
+1. Retrieves city suggestions based on user input.
 
 2. Retrieves the 5 most popular cities.
 
-3. Retrieves the 5 most popular cities departing from Paris. Replace "paris" with the desired city.
+3. Retrieves the 5 most popular cities departing to choosen city.
+
+4. Retrieves the 5 most popular cities destination from choosen city.
 
 ## Deployment
 
